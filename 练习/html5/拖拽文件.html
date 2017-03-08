@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div{ height:300px;width:300px;background:#9FF;margin:150px}
+ li{ list-style:none;}
+ img{width:200px;height:100px}
+</style>
+<script>
+  window.onload=function(){
+	 
+	  var oDiv=document.querySelector('div');
+	  var oUl=document.querySelector('ul');
+		oDiv.ondragenter=function(){
+			  this.innerHTML='可以释放鼠标了';
+			}
+			
+		oDiv.ondragleave=function(){
+			  this.innerHTML='请将文件拖拽到此次';
+			}
+			
+		oDiv.ondragover=function(ev){
+			 ev.preventDefault();
+			}
+			
+		oDiv.ondrop=function(ev){
+			ev.preventDefault();
+			var fs=ev.dataTransfer.files;
+			
+			//console.log(fs.length);
+			//console.log(fs[0].type);
+			
+			for(var i=0; i<fs.length;i++)
+				 {   
+				     var fr=new FileReader();
+					 fr.readAsDataURL(fs[i]);
+					 
+					 fr.onload=function(){
+						console.log(this.result);
+						if(this.result.indexOf('image')!=-1)
+						  {
+							var oLi=document.createElement('li');
+							var oImg=document.createElement('img');
+							oImg.src=this.result;
+							oLi.appendChild(oImg);
+							oUl.appendChild(oLi); 
+						  }else{
+								 alert('这不是图片文件');
+							   }
+						
+				     }
+				 }
+			
+			
+			
+			}
+	  }
+</script>
+</head>
+ 
+<body>
+ 
+  <div>请将文件拖拽到此次</div>
+   <ul>
+    
+  </ul>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  input{ display:block}
+</style>
+<script>
+  window.onload=function ()
+            {
+				var btn=document.getElementsByTagName("input");
+				var click1=document.getElementById("bbb");
+				
+				click1.onclick=function ()
+				         {
+							
+							 for(var i=0;i<btn.length;i++)
+							   {
+								  if(btn[i].checked==true)
+								     {
+								      btn[i].checked=false; 
+									 }
+									else{ btn[i].checked=true;}
+								}
+						 }
+				}
+          
+</script>
+</head>
+
+<body>
+  <div style="width:200px;height:500px;border:#999 solid 1px">
+  <p id="bbb">全选</p>
+     <input type="checkbox" />
+     <input type="checkbox" />
+     <input type="checkbox" />
+     <input type="checkbox" />
+     <input type="checkbox" />
+     <input type="checkbox" />
+     <input type="checkbox" />
+  </div>
+</body>
+</html>

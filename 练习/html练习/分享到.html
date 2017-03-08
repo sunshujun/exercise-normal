@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+  div{width:100px;height:200px;position:absolute;left:-100px;top:30px;background:#ccc;}
+  span{width:20px;height:60px;line-height:20px;position:absolute;background:#FF6;top:80px;left:100px;}
+</style>
+<script type="text/javascript">
+ window.onload=function()
+    {
+		var oDiv=document.getElementsByTagName('div')[0];
+		var span=document.getElementsByTagName('span')[0];
+	    var timer;
+
+		oDiv.onmouseover=function()
+		  {  
+		    clearInterval(timer);
+		    timer=setInterval(moveout,30);
+		}
+		
+		oDiv.onmouseout=function()
+		  {  
+		    clearInterval(timer);
+		    timer=setInterval(movein,30);
+		}
+		
+		/*oDiv.onmouseover=oDiv.onmouseout=function()
+		     { 
+			    clearInterval(timer);
+				 if(oDiv.offsetLeft<0)
+				  {
+					  timer=setInterval(moveout,30);
+				  }
+				  else
+				    { 
+					  timer=setInterval(movein,30);
+					}
+			 }
+		  　*/
+	  function moveout()
+	     {
+			   if(oDiv.offsetLeft<0)
+			  {
+			   oDiv.style.left=oDiv.offsetLeft+10+'px';
+			  }
+		}
+	  function movein()
+	     {
+			   if(oDiv.offsetLeft>-100)
+			  {
+			   oDiv.style.left=oDiv.offsetLeft-10+'px';
+			  }
+		}
+	}
+</script>
+</head>
+
+<body>
+  <div>
+    <span>分享到</span>
+  </div>
+</body>
+</html>

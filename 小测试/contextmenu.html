@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{position:absolute;visibility:hidden;background-color:#F9C8AA;list-style:none;margin:0;padding:0}
+			div{cursor:pointer}
+		</style>
+		<script type="text/javascript" src="js/EventUtil.js" ></script>
+		<script> 
+			EventUtil.addHander(window,"load",function(){
+				var oDiv=document.getElementById("myDiv");
+				var oUl=document.getElementsByClassName("menu")[0];
+				EventUtil.addHander(oDiv,"contextmenu",function(event){
+					evevt=event||window.event;
+					event.preventDefault();
+					event.returnValue=false;
+					oUl.style.left=event.clientX+"px";
+					oUl.style.top=event.clientY+"px";
+					oUl.style.visibility="visible"; 
+				});
+				EventUtil.addHander(oDiv,"click",function(event){
+					oUl.style.visibility="hidden";
+				})
+				EventUtil.addHander(window,"beforeunload",function(event){
+					event=event||window.event;
+					event.returnValue="你真的要离开吗？";
+					return "你真的要离开吗？";
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="myDiv">点击右键，出现上下文菜单</div>
+		<ul class="menu">
+			<li><a href="http://www.baidu.com">百度</a></li>
+			<li><a>百度</a></li>
+			<li><a>百度</a></li>
+		</ul>
+	</body>
+</html>

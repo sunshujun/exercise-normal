@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  #box1{margin:0 auto; width:70px;}
+  p{margin:5px auto;text-align:center;}
+  a{text-decoration:none;}
+  a:hover{ color:#0F9}
+  #btn{border:#999 solid 1px;}
+ </style>
+ 
+ <script>
+    window.onload=function() 
+	{ 
+	   var box=document.getElementById("box2");
+	   var btn=document.getElementById("btn");
+	   var clo=document.getElementById("clo");
+	   var type=document.getElementsByClassName("type");
+	  box.onclick=function()
+		 {
+			 if(btn.style.display=="none")
+			   {
+				   btn.style.display="block";
+				}
+			else{
+				 btn.style.display="none";
+				}
+	     }
+		 
+	  clo.onclick=function()
+			{
+					btn.style.display="none";
+		    }
+			
+			
+		    for(var i=0;i<type.length;i++)
+		         {
+	                 type[i].index=i;
+					 type[i].onclick=function()
+					{ 
+					   	box.innerHTML= this.innerHTML;
+					}
+					 
+			     }
+		}
+ </script>
+</head>
+
+<body>
+  <div id="box1">
+    <p id="box2">输入法</p>
+    <div id="btn">
+       <p><a class="type" href="#">百度</a></p>
+       <p><a class="type" href="#">搜狗</a></p>
+       <p><a class="type" href="#">易迅</a></p>
+       <hr />
+       <p ><a id="clo" href="#">关闭</a></p>
+     </div>
+    </ul>
+  
+  </div>
+</body>
+</html>

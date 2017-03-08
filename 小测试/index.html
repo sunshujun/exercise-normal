@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js" ></script>
+	<script>
+		window.onload=function(){  
+		   console.log($(".inner").offset().top+":"+$(".inner").position().top+":"+window.innerHeight )
+		   console.log($(".foot").offset().top+":"+$(".foot").position().top)
+		   console.log(document.getElementsByClassName("inner")[0].offsetTop)
+		   console.log(document.getElementsByClassName("foot")[0].offsetTop);
+		   
+		}
+	</script>
+	<body >
+		<div style="height:800px;width:400px;border:1px solid #ccc;padding:50px; margin:100px;position:relative;" class="outer">
+		   <div style="height:100px;width:100px;background:red;" class="inner">
+		   </div>
+		</div>
+		<div class="foot" style="width:100px;height:100px;background:#ccc;">
+			<span style="word-break:break-word;vertical-align:middle;">jsdfjksdjfdsfdsfsdfsdfs </span>
+		</div>
+		<button class="In">fadeIn</button><button class="Out">fadeOut</button>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js" ></script>
+	<script>
+		$(".In").click(function(){
+			$(".foot").fadeTo(1000,0.5)
+		});
+		$(".Out").click(function(){
+			$(".foot").fadeOut(1000)
+		});
+	</script>
+	</body>
+</html>

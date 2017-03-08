@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div{height:100px;width:100px;}
+ summary{ display:inline-block}
+</style>
+<script>
+  window.onload=function(){
+	  var oDiv=document.querySelector('#div');
+	  var oText=document.querySelector('input');
+	  oDiv.style.background="red";
+	   oText.onblur=function(){
+		   alert(oText.value);
+		   }
+	  
+	  }
+</script>
+</head>
+
+<body>
+ <div id="div"></div>
+ 1.datalist
+ <input type="text"  list="valist"/>
+  <datalist id="valist">
+    <option value="124324">124324</option>
+    <option value="dfsdff">dfsdff</option>
+    <option value="123jkfdjslk">123jkfdjslk</option>
+  </datalist><br /><br />
+  2.details    <br />
+  <details>
+		<summary>妙味课堂</summary>
+		<p>国内将知名的IT培训机构</p>
+	</details>
+  3. dialog        <br />
+  
+<dialog>
+  <dt>老师</dt>
+  <dd>2+2 等于？</dd>
+  <dt>学生</dt>
+  <dd>4</dd>
+  <dt>老师</dt>
+  <dd>答对了！</dd>
+</dialog > <br />
+ 4.进度条
+    <progress max="100" value="70">
+             <span>76%</span>
+     </progress> <br />
+ 5.input type  email      <br />
+ <form>
+   <input type="email" />
+   <input type="submit"  value="提交"/>
+ </form>
+ <br />
+ <br />
+ 6.input type  tel      <br />
+ <form>
+   <input type="tel" />
+   <input type="submit"  value="提交"/>
+ </form>
+ <br />
+ <br />
+ 7.input type  url      <br />
+ <form>
+   <input type="url" />
+   <input type="submit"  value="提交"/>
+ </form>
+ <br />
+ <br />
+ 8.input type   search     <br />
+ <form>
+   <input type="search" />
+   <input type="submit"  value="提交"/>
+ </form>
+  <br />
+ <br />
+ 9.input type   range    <br />
+ <form>
+   <input type="range" value="12" max="100" step="10" min="0"/>
+   <input type="submit"  value="提交"/>
+ </form>
+</body>
+</html>

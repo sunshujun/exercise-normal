@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ img{width:150px;height:150px;position:absolute;top:200px;}
+</style>
+<script>
+
+		//alert(getStyle(aImg[1],'top'));
+		//shake(aImg[0],'top');
+	
+	function shake(obj,attr){
+		 obj.flag=false;
+		 var arr=[];
+		 var num=0;
+		 for(var i=20;i>0;i-=2)
+		  {
+			  arr.push(i,-i);
+		   }
+		 obj.timer=setInterval(function(){
+			 var a=parseInt(getStyle(obj,attr))+arr[num];
+			  num++;
+			  obj.style[attr]=a+'px';
+			  if(num==arr.length)
+			   {
+				   clearInterval(obj.timer);
+				   num=0
+				   obj.flag=true;
+				}
+			 },100);
+		}
+     function getStyle(obj,attr){
+		 return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		 }
+	 
+	 window.onload=function(){
+	 var aImg=document.getElementsByTagName('img');
+	
+	  for(var i=0;i<aImg.length;i++)
+	   {   aImg[i].flag=true;
+		   aImg[i].style.left=i*160+'px';
+		   aImg[i].onmouseover=function(){
+			   if(this.flag){
+			             shake(this,'top');
+			           }
+			   }
+	   }
+	 }
+</script>
+</head>
+
+<body>
+ <img src="img/1.jpg" />
+ <img src="img/2.jpg" />
+ <img src="img/3.jpg" />
+ <img src="img/4.jpg" />
+</body>
+</html>

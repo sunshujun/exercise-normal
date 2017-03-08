@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#canvas{display:block;width:400px;height:400px;border:1px solid #CCCCCC;margin:0 auto;}
+		</style> 
+	</head>
+	<body>
+		<img id="img" src="img/14555070718366.jpg" />
+		<canvas id="canvas" width="400" height="400"></canvas>
+		<canvas id="canvas2" width="500" height="600"></canvas> 
+		<script>
+			var oDiv=document.getElementById("canvas"); 
+		   
+			var context=oDiv.getContext("2d");
+			context.fillStyle="#F9C8AA";
+			context.fillRect(10,10,50,50); 
+			
+			context.fillStyle="rgba(0,0,255,.5)";
+			context.fillRect(30,30,50,50);
+			
+			context.strokeStyle="#F0FFA4"
+			context.strokeRect(60,60,50,50)
+		    
+		    context.clearRect(40,40,10,10)
+		    
+		    context.beginPath(); //要绘制路径，必须要调用beginPath（）方法
+		    context.arc(200,200,99,0,2*Math.PI,false);
+		    context.moveTo(293,200);
+		    context.arc(200,200,93,0,2*Math.PI,false);
+		   
+		    
+		    context.font="bold 14px Arial";
+		    context.textAlign="center";
+		    context.fillStyle="#F9C8AA"
+		    context.fillText("12",200,120);
+		    context.translate(200,200);
+		    context.rotate(0.5*Math.PI);
+		     context.moveTo(0,0);
+		    context.lineTo(0,-85);
+		    context.moveTo(0,0);
+		    context.lineTo(-65,0);
+		    context.stroke();
+		    
+//		    var img=document.images[0]; 
+//		 	context.drawImage(img,0,300); 最好将画图片写在load方法里面，这就能保证这时图片一定加载完了
+		    
+		 window.onload=function(){
+		 	  var img=document.images[0]; 
+		 	  var canvas=document.getElementById("canvas2");
+		 	  var context2=canvas.getContext("2d");
+		 	  
+		 	  context2.strokeStyle="#F9C8AA";
+		 	  context2.beginPath();
+		 	  context2.moveTo(0,0);
+		 	  context2.lineTo(400,400);
+		 	  context2.stroke();
+		 	  context2.drawImage(img,0,0,300,100); 
+		 	  context2.drawImage(img,20,20,40,50,0,100,40,50)
+		 	  
+		 	  context2.shadowOffsetX=5;
+		 	  context2.shadowOffsetY=4;
+		 	  context2.shadowBlur=5;	
+		 	  context2.shadowColor="rgba(0,0,255,.5)";
+		 	  context2.strokeStyle="antiquewhite";
+		 	  context2.strokeRect(150,150,40,40);
+		 	  context2.fillStyle="#F9C8AA";
+		 	  context2.fillRect(200,200,60,60);
+		 	  
+		 	  var gradient=context2.createLinearGradient(0,300,100,400);
+		 	  gradient.addColorStop("0","#F9C8AA");
+		 	  gradient.addColorStop(".5","#fff");
+		 	  gradient.addColorStop("1","#f8a188");
+		 	  context2.fillStyle=gradient;
+		 	  context2.fillRect(0,300,100,100);
+		 	  
+		 	  var radial=context.createRadialGradient(200,400,50,200,400,100);
+		 	  radial.addColorStop("0","#f1a961");
+		 	  radial.addColorStop(".5","#0000ff");
+		 	  radial.addColorStop("1","#f00");
+		 	  context2.fillStyle=radial;
+		 	  context2.fillRect(100,300,200,200);
+		 	  
+		 	  
+		 }
+		</script> 
+	</body>
+</html>

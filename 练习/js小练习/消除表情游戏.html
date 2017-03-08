@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body{padding:0;margin:0;}
+ .outer{margin:0 auto;text-align:center;width:1366px}
+ #display,#score{border:2px solid #6F9;display:inline-block}
+ #score{width:120px;height:80px;border-right:none;position:absolute;left:-124px;top:-2px}
+ #score span{color:#333;display:inline-block;height:20px;margin-top:12px}
+ #display{width:800px;height:400px;position:relative;top:0px;}
+ #img{width:30px;height:30px;position:absolute;top:0px; }
+</style>
+
+<script>
+  window.onload=function()
+  {
+	  var oIn=document.getElementsByTagName('input')[0];
+	  var oScore=document.getElementById('score');
+	  var aSpan=oScore.getElementsByTagName('span');
+	  var oDis=document.getElementById('display');
+	  var oImg=document.getElementById('img');
+	  var oImge=oImg.getElementsByTagName('img')[0];
+	  var timer1=null;
+	  var speed=5;
+	  var top=0;
+	  var target=380;
+	  var score=0;
+	  var lost=0;
+	  oIn.onclick=function(){
+		  this.value='游戏进行中...';
+		  oImg.style.display='block';
+		  oImg.style.top='0px';
+		  oImg.style.left=Math.floor(Math.random()*770)+'px';
+		   
+		   down();
+		   
+		  } 
+		  
+	  oImg.onclick=function()
+	    {   oImge.src='imgs/qq.png';
+		    score++;
+			speed++;
+			aSpan[0].innerHTML='得分:'+score+'分';
+			clearInterval(timer1);
+			shake(oImg,'left');
+			setTimeout(function(){
+				 oImg.style.display='block';
+				 oImg.style.top='0px';
+		         oImg.style.left=Math.floor(Math.random()*770)+'px';
+			     down();
+				},1500);
+		   
+		}
+		
+		function down()
+		 {
+			  clearInterval(timer1);
+			  oImge.src='imgs/'+Math.floor((Math.random()+0.1)*10)+'.png';
+			  oImg.style.display='block';
+		    top=parseInt(getStyle(oImg,'top'));
+		    timer1=setInterval(function(){
+				
+				oImg.style.display='block';
+			   top+=speed;
+			     if(top>=target)
+				   { 
+				    top=target;
+				   }
+			   oImg.style.top=top+'px';
+			      if(top==target)
+				   {   
+				        shake(oDis,'top');
+						oImge.src='imgs/'+Math.floor((Math.random()+0.1)*10)+'.png'; 
+				        speed+=2;
+				        top=0;
+						oImg.style.display='none';
+					    oImg.style.top='0px';
+		                oImg.style.left=Math.floor(Math.random()*770)+'px';
+						lost++;
+						aSpan[1].innerHTML='失分:'+lost+'分';
+						if(lost==10)
+				         {
+							  clearInterval(timer1);
+							  alert('抱歉，游戏失败，请重新开始游戏！');
+							  oIn.value='开始游戏';
+							  speed=5;
+							  score=0;
+							  lost=0;
+							  aSpan[0].innerHTML='得分:0分';
+							  aSpan[1].innerHTML='失分:0分';
+							 
+						 }
+					} 
+				   
+			   },100);
+			 }
+	  
+   }
+   
+   function shake(obj,attr)
+     {  
+	    clearInterval(obj.timer1);
+	     var num=0;
+		 var left=parseInt(getStyle(obj,attr));
+		 var p=[];
+		 for(var i=7;i>0;i--)
+		   {
+			  p.push(i,-i); 
+			}
+		 obj.timer1=setInterval(function(){
+			  left+=p[num];
+			  obj.style[attr]=left+'px';
+			   num++;
+			   if(num>=p.length)
+			     {
+					 clearInterval(obj.timer1);
+				  }
+			 },100)
+	 }  //震动效果
+	 
+	 /*function down(obj,target,speed)
+	   { 
+	     
+		   clearInterval(timer1);
+		   var top=parseInt(getStyle(obj,'top'));
+		    timer1=setInterval(function(){
+			   top+=speed;
+			     if(top>=target)
+				   { 
+				    top=target;
+				   }
+			   obj.style.top=top+'px';
+			      if(top==target)
+				   {   speed+=2;
+					   clearInterval(timer1);
+					    obj.style.top='0px';
+		                obj.style.left=Math.floor(Math.random()*770)+'px';
+		                down(obj,380,speed);
+					} 
+				   
+			   },100);
+			 
+		}
+		*/
+	 function getStyle(obj,attr)
+	    {
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+	    }
+		
+	
+</script>
+</head>
+
+<body>
+
+<div class="outer">
+ <h2>你的鼠标有多快</h2>
+ <h3>游戏说明：点击“开始游戏”，随机掉下qq表情，点中他，千万不要让它掉下去！！</h3>
+ <input id="start" type="button"  value="游戏开始"/><br /><br />
+ <div id="display">
+   <div id="score">
+       <span>得分:0分</span>
+       <span>失分:0分</span>
+   </div>
+   <div id="img"><img src="imgs/1.png" /></div>
+ </div>
+</div>
+</body>
+</html>

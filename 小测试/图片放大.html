@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		   div{margin:100px auto;width:100%}
+			img{margin:0 auto;opacity:0;display: block;}
+			.img{transition:all 2s 2s ,margin 2s ;transform:scale(2,2);opacity:1;margin-bottom:10px}
+		</style>
+	</head>
+	<body>
+		<button>点击图片出现并放大</button>
+		<div>
+			<img src="img/14555070718366.jpg" />
+		</div>
+	</body>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementsByTagName("button")[0];
+			var img=document.getElementsByTagName("img")[0];
+			btn.onclick=function(){
+				img.className="img"
+			}
+		}
+	</script>
+</html>

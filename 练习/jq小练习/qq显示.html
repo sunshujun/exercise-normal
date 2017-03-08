@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<style>
+body,ul{padding:0;margin:0}
+li{ list-style:none}
+#outer{width:150px;border:1px solid #000;margin:20px auto}
+#outer li{width:150px;border-bottom:1px solid #000;line-height:30px;}
+span{display:block;width:150px;height:30px;background:#9CF }
+#outer .last{border-bottom:none}
+img{ vertical-align:middle;margin:0 5px}
+#outer ul{border-top:1px #000 solid}
+.list{display:none}
+</style>
+
+<script>
+ $(function(){
+	  var aOn=[true,true,true];
+	  var aImg=['imgs/3.png','imgs/5.png','imgs/qq.png'];
+	  
+	 $('#outer').find('li').find('span').click(function(){
+		  var on=aOn[$(this).parent().index()]
+		  if(on)
+		   {
+			$(this).css('background','#fc0')
+			$(this).find('img').attr('src','imgs/4.png')
+		    $(this).next().css('display','block');
+		   }else
+		     { 
+			   $(this).css('background','#9CF')
+			   $(this).find('img').attr('src',aImg[$(this).parent().index()])
+			   $(this).next().css('display','none');
+			 }
+			aOn[$(this).parent().index()]=!on;
+		 });
+		 
+	 $('.list').find('li').click(function(){
+		  $('.list').find('li').css('background','#fff');
+		  $(this).css('background','#ccc');
+		  
+		 });
+	 })
+</script>
+</head>
+
+<body>
+ <ul id="outer">
+   <li ><span><img src="imgs/3.png" />我的好友</span>
+      <ul class="list">
+       <li>张三</li>
+       <li>张三</li>
+       <li>张三</li>
+       <li class="last">张三</li>
+      </ul>
+    </li>
+   <li><span><img src="imgs/5.png" />企业好友</span>
+      <ul class="list">
+          <li>王五</li>
+          <li>王五</li>
+          <li>王五</li>
+          <li class="last">张三</li>
+      </ul>
+   </li>
+   <li class="last"> <SPAN><img  src="imgs/qq.png" />黑名单</span>
+      <ul class="list">
+         <li>李四</li>
+          <li>李四</li>
+           <li>李四</li>
+         <li class="last">张三</li>
+      </ul>
+   </li>
+ </ul>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js" ></script>
+	<style>
+	@-webkit-keyframes cilcle{
+		0%{border-radius:0px;}
+		20%{
+			 border-radius:5px;background:#aaa;
+			 transform:rotate(70deg);
+			 -webkit-transform:rotate(70deg);
+			 -moz-transform:rotate(70deg);
+			  -ms-transform:rotate(70deg);
+			}
+		40%{
+			border-radius:10px;background:#999;
+			transform:rotate(140deg);
+			-webkit-transform:rotate(140deg);
+			-moz-transform:rotate(140deg);
+			-ms-transform:rotate(140deg);
+		   }
+		60%{ 
+			border-radius:15px;background:#666;
+			transform:rotate(210deg);
+			-webkit-transform:rotate(210deg);
+			-moz-transform:rotate(210deg);
+			-ms-transform:rotate(210deg);
+			}
+		80%{
+			border-radius:20px;background:#333;
+			transform:rotate(280deg);
+			-webkit-transform:rotate(280deg);
+			-moz-transform:rotate(280deg);
+			-ms-transform:rotate(280deg);
+			}
+		100%{border-radius:25px;background:#000;
+		      transform:rotate(360deg);
+		      -webkit-transform:rotate(360deg)}
+		      -moz-transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+	}
+	
+	@-moz-keyframes cilcle{
+		0%{border-radius:0px;}
+		20%{
+			 border-radius:5px;background:#aaa;
+			 transform:rotate(70deg);
+			 -webkit-transform:rotate(70deg);
+			 -moz-transform:rotate(70deg);
+			  -ms-transform:rotate(70deg);
+			}
+		40%{
+			border-radius:10px;background:#999;
+			transform:rotate(140deg);
+			-webkit-transform:rotate(140deg);
+			-moz-transform:rotate(140deg);
+			-ms-transform:rotate(140deg);
+		   }
+		60%{ 
+			border-radius:15px;background:#666;
+			transform:rotate(210deg);
+			-webkit-transform:rotate(210deg);
+			-moz-transform:rotate(210deg);
+			-ms-transform:rotate(210deg);
+			}
+		80%{
+			border-radius:20px;background:#333;
+			transform:rotate(280deg);
+			-webkit-transform:rotate(280deg);
+			-moz-transform:rotate(280deg);
+			-ms-transform:rotate(280deg);
+			}
+		100%{border-radius:25px;background:#000;
+		      transform:rotate(360deg);
+		      -webkit-transform:rotate(360deg)}
+		      -moz-transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+	}
+	@keyframes cilcle{
+		0%{border-radius:0px;}
+		20%{
+			 border-radius:5px;background:#aaa;
+			 transform:rotate(70deg);
+			 -webkit-transform:rotate(70deg);
+			 -moz-transform:rotate(70deg);
+			  -ms-transform:rotate(70deg);
+			}
+		40%{
+			border-radius:10px;background:#999;
+			transform:rotate(140deg);
+			-webkit-transform:rotate(140deg);
+			-moz-transform:rotate(140deg);
+			-ms-transform:rotate(140deg);
+		   }
+		60%{ 
+			border-radius:15px;background:#666;
+			transform:rotate(210deg);
+			-webkit-transform:rotate(210deg);
+			-moz-transform:rotate(210deg);
+			-ms-transform:rotate(210deg);
+			}
+		80%{
+			border-radius:20px;background:#333;
+			transform:rotate(280deg);
+			-webkit-transform:rotate(280deg);
+			-moz-transform:rotate(280deg);
+			-ms-transform:rotate(280deg);
+			}
+		100%{border-radius:25px;background:#000;
+		      transform:rotate(360deg);
+		      -webkit-transform:rotate(360deg)}
+		      -moz-transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+	}
+		.outer{margin:100px auto;width:200px;height:200px;background:#F9C8AA;display:none;}
+		.inner{width:50px;height:50px;background:#CCCCCC;margin:30px auto}
+		 button{margin:20px auto}
+		.cilcle{width:50px;height:50px;background:#CCCCCC;margin:30px auto;animation:cilcle 2s linear 1s infinite ;-webkit-animation:cilcle 2s linear 1s infinite ;-moz-animation:cilcle 2s linear 1s infinite;}
+	</style>
+	<body>
+		 
+			<div class="inner">
+				
+			</div>
+			<button>点击旋转</button>
+		 
+		<script>
+			window.onload=function(){
+				var btn=document.getElementsByTagName("button")[0];
+				var div=document.getElementsByClassName("inner")[0];
+				btn.onclick=function(){
+					$(div).toggleClass("cilcle") 
+					//$(div).addClass("cilcle")
+				}
+				 
+				 
+				if(div.attachEvent)
+				{
+					alert("ie")
+				}
+				if(div.addEventListener)
+				{
+					alert("chrome")
+				}
+				
+			}
+		</script>
+	</body>
+</html>

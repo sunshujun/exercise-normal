@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js" ></script>
+	</head>
+	<body>
+		<input class="one" />
+		<input class="two" />
+		<input class="three" />
+	</body>
+	<script> 
+	window.onload=function(){
+			$(".one").blur(function(){
+				setTimeout(function(){ 
+					if(!$(".two").is(":focus"))
+					{
+						$(".two").focus();
+						alert()
+					    $(".two").blur();
+					    $(".three").focus();
+					}
+				},50)
+				
+			})
+		}
+	</script>
+</html>

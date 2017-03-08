@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ <style>
+   #box1{width:250px;height:600px;background-color:#F0F0F0;margin:0 auto }
+   ul div{width:50px;height:50px;border:1px #333333 solid; float:left;
+      margin:5px;background-color:#CDCDCD;text-align:center;line-height:50px;
+	}
+   #box1 #box2{width:172px;margin-left:45px;border:solid #F9F9F9 2px;
+   background-color:#F6F6F6;  min-height:80px; margin-top:15px;}
+   ul{ list-style:none ;margin:0 auto; }
+   .active{background-color:#FFF;}
+   span{padding:5px;}
+   p{text-indent:1em  }
+ </style>
+ <script>
+    var arr=["要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？",
+	"要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？",
+	 "要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？","你还好吗，最近都在干什么？",
+	 "要过年了，该港些什么什么好呢？","要过年了，该港些什么什么好呢？","要过年了，该gan些什么什么好呢？"]
+    window.onload=function()
+	  {  
+	   
+		var blo=document.getElementsByTagName("ul")[0].getElementsByTagName("div");
+		var tab=document.getElementsByTagName("p")[0];
+		var span1=document.getElementsByTagName("span")[0];
+		var i;
+		for(i=0;i<blo.length;i++)
+		  {
+			   blo[i].index=i;
+			  blo[i].onmouseover=function()
+			   {  		     
+			      for(var x=0;x<blo.length;x++)
+				   {
+					 blo[x].className="";   
+					}
+				   this.className="active";
+				   tab.innerHTML=(this.index+1)+"月活动";
+				   span1.innerHTML=arr[this.index];
+				}
+		  }
+	  }
+ </script>
+</head>
+
+<body>
+  <div id="box1">
+    <ul>
+       <li><div>一月</div></li>
+       <li><div>二月</div></li>
+       <li><div>三月</div></li>
+       <li><div>四月</div></li>
+       <li><div>五月</div></li>
+       <li><div>六月</div></li>
+       <li><div>七月</div></li>
+       <li><div>八月</div></li>
+       <li><div>九月</div></li>
+       <li><div>十月</div></li>
+       <li><div>十一月</div></li>
+       <li><div>十二月</div></li>  
+    </ul>
+    <div id="box2">
+       <p>一月活动</p>
+       <span>sdagawegfasefef</span>
+        
+     </div>
+  </div>
+</body>
+</html>

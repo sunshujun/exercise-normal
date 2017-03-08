@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		
+	</head>
+	<body>
+		<div class="div"></div>
+	</body>
+	<script>
+			var a=[];
+       for(let i=0;i<10;i++)
+       {
+       	 a[i]=function(){ 
+       	 	console.log(i)
+       	 };
+       }
+      a[3]();
+
+      let s=5;
+      // (function(){alert(s)}());
+
+      if (true) {
+      	let f=0;
+      } 
+      console.log(window.a[2]);
+
+      var [c,d,e]=[1,2,{"name":"sun","add":"江西"}]
+      console.log(c+":"+d+":"+e.name)
+
+      var {name,add}={name:"sun",add:"jiangxi"};
+      console.log(name+":"+add)
+
+      var [f,g,h,i,j]="hello";
+      console.log(f+":"+g+":"+h+":"+i+":"+j);
+
+      var str="hello word";
+      console.log(str.includes("hello")+":"+str.indexOf("hell1")+":"+str.startsWith("H")+":"+str.endsWith("d"));
+      console.log("sun".repeat(2)+":"+"shu".repeat("3.9")+":"+"jun".repeat(0.2)); 
+     var oDiv=document.getElementsByClassName("div")[0];
+     var basket={"count":"1","onSale":"YES"}
+     alert(typeof oDiv)
+     oDiv.innerHtml="There are <b>${basket.count}</b> items in your basket, <em>${basket.onSale}</em>are on sale!";
+		</script>
+</html>

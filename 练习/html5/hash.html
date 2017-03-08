@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script>
+ window.onload=function(){
+	 var oIn=document.querySelector('input');
+	 var oDiv=document.querySelector('div');
+	 var json={};
+	 
+	 oIn.onclick=function(){
+		 
+		 var num=Math.random();
+		 var arr=Random(40,8);
+		 oDiv.innerHTML=arr;
+		 json[num]=arr;
+		 window.location.hash=num;
+		 console.log(json);
+		 }
+		 
+	 window.onhashchange=function(){
+		 oDiv.innerHTML=json[window.location.hash.substring(1)];
+		 }
+	 
+	 function Random(num,sel){
+		 var arr=[];
+		 var newArr=[];
+		 for(var i=0;i<=num;i++)
+		      {
+				  arr.push(i);
+			  }
+		  for(var i=0;i<=sel;i++)
+		    {
+				newArr.push( arr[Math.floor(Math.random()*num)] );
+			}
+			return newArr;
+		 }
+	 
+	 }
+</script>
+<body>
+ <input type="button" value="随机选数" />
+ <div></div>
+</body>
+</html>
+

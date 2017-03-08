@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  body{background-color:#300150 }
+  div{height:520px;width:520px; background-image:url(img/bg.png);
+   margin:0 auto; text-align:center; }
+  
+  #clock{margin:40px auto} 
+  
+  #first{height:50px;background-color:#FFF}
+  #second{height:50px;}
+  
+  img{margin:4px;}
+  #img1{margin-top:100px }
+  
+</style>
+
+<script>
+  function toTwo(x)
+     {
+		  if(x<10)
+		  {
+			   return "0"+x;
+		  }
+		  else{return ""+x;}
+     }
+  function  showtime()
+    { 
+	    var time=new Date();
+	    var year=time.getFullYear();
+		var month=time.getMonth()+1;
+		var day=time.getDate();
+		var hour=time.getHours();
+		var minute=time.getMinutes();
+		var second=time.getSeconds();
+		var week=time.getDay();
+		var weeks=["seven","one","two","three","four","five","six"]
+		
+		var but=year+toTwo(month)+toTwo(day)+toTwo(hour)+toTwo(minute)+toTwo(second); 
+		
+		var pics=document.getElementsByClassName("sel");
+		var nowday=document.getElementsByClassName("day");
+		for(var i=0;i<pics.length;i++)
+      { 
+	    pics[i].src="img/"+but.charAt(i)+".png";
+		nowday[0].src="img/"+weeks[week]+".png"
+      }
+	  
+    }
+	
+	 window.onload=function()
+	     {  
+		    showtime();
+		   setInterval(showtime,1000);	 
+		 }
+</script>
+</head>
+
+<body>
+  <div>
+   <img id="clock" src="img/title.png"/> <br />        
+  <img class="sel" src="img/0.png" />                                
+  <img class="sel" src="img/0.png" />
+  <img  class="sel" src="img/0.png" />
+  <img class="sel" src="img/0.png" />
+  <img src="img/year.png" />
+  <img  class="sel" src="img/0.png" />
+  <img class="sel" src="img/0.png" />
+  <img src="img/month.png" />
+  <img  class="sel" src="img/0.png" />
+  <img class="sel" src="img/0.png" />
+  <img src="img/seven.png" /> 
+  <br />
+ 
+  <img class="sel" src="img/0.png" />                           
+  <img class="sel" src="img/0.png" />
+  <img src="img/sign.png" />
+  <img class="sel" src="img/0.png" />
+  <img class="sel" src="img/0.png" />
+  <img src="img/sign.png" />
+   <img class="sel" src="img/0.png" />
+  <img class="sel" src="img/0.png" />
+   <img src="img/week.png" />
+  <img class="day" src="img/one.png" /> 
+    <br />
+    <img id="img1" src="img/miaov.png" />
+      
+ 
+  
+  </div>
+</body>
+</html>

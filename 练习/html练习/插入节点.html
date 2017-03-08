@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+ <style type="text/css">
+
+  a{text-decoration:none}
+ </style>
+
+<script type="text/javascript">
+  window.onload=function()
+     {
+		 var oUl=document.getElementById('ul1');
+		 var oTxt=document.getElementById('txt');
+		 var oBtn=document.getElementById('btn');
+		 var aLis=document.getElementsByTagName('li');
+		
+		 
+		oBtn.onclick=function()
+		    {  
+			   var oLi=document.createElement('li');
+			
+			    oLi.innerHTML=oTxt.value+'&nbsp<a href="javascript:;"  >删除</a>';
+				//oUl.appendChild(oLi);
+			    if(aLis.length==null)
+				   {
+					    oUl.appendChild(oLi);
+					}
+					else{
+				       oUl.insertBefore(oLi,aLis[0]);
+					}
+					
+					var aA=document.getElementsByTagName('a');
+					
+				  for(var i=0;i<aA.length;i++)
+				  { 
+				     aA[i].onclick=function()
+					       {
+							  oUl.removeChild(this.parentNode);
+						   }
+					}
+			   }
+			 
+		 
+		
+ 	 }
+</script>
+</head>
+
+<body>
+ <input type="text" id='txt' />
+ <input id="btn" type="button" value="创建新列"/>
+  <ul id="ul1">
+      
+  </ul>
+</body>
+</html>

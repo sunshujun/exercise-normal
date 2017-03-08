@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ #up{height:100px;width:440px}
+ #up div{height:50px;width:100px;display:inline-block;background:#333;margin-right:0px;margin-top:50px
+         ; text-align:center;vertical-align:middle; line-height:50px}
+ 
+ #line{height:10px;background:#ccc;width:440px}
+</style>
+<script>
+ window.onload=function(){
+	 var aDiv=document.getElementById('up').getElementsByTagName('div');
+	  for(var i=0;i<aDiv.length;i++)
+	    {
+			aDiv[i].onmouseover=function(){
+				this.style.background='#ccc';
+				}
+			aDiv[i].onmouseout=function(){
+				this.style.background='#333';
+				}
+		}
+	 }
+</script>
+</head>
+
+<body>
+<div id="up">
+ <div>dsfwef</div><div></div>     <div></div><div></div>
+</div>
+<div id="line"></div>
+</body>
+</html>

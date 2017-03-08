@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ span{color:red}
+ #out{width:300px;height:50px;border:1px #000 solid;line-height:50px; font-size:20px;}
+ #out div{width:16px;height:16px;background:#CCC ;display:inline-block;margin-left:5px;}
+ #level{color:#F90;margin-left:15px;}
+</style>
+<script>
+ window.onload=function(){
+    var oOut=document.getElementById('out');
+	var aDiv=oOut.getElementsByTagName('div');
+	var oSpan=document.getElementById('level');
+	var num=0;
+	var text='';
+	for(var i=0;i<aDiv.length;i++)
+	 {   aDiv[i].index=i;
+		 aDiv[i].onmouseover=function(){
+			 change(num,'#ccc');
+			 change(this.index,'#FFCC00');
+			 }
+	     aDiv[i].onmouseout=function(){
+			  change(this.index,'#ccc');
+			  change(num,'#ffcc00');
+			 }
+		 aDiv[i].onclick=function(){
+			  change(this.index,'#FFCC00');
+			  num=this.index;
+			 }
+	  }
+	  
+	 function change(length,color){
+		  for(var j=0;j<=length;j++)
+			 {     if(length==0)
+			         {
+						 aDiv[j].style.background='#666';
+					 }else{
+					      aDiv[j].style.background=color;
+					      }
+					switch(j){
+						case 0:oSpan.innerHTML='很差';break;
+						case 1:oSpan.innerHTML='较差';break;
+						case 2:oSpan.innerHTML='一般';break;
+						case 3:oSpan.innerHTML='推荐';break;
+						case 4:oSpan.innerHTML='力荐';
+						}
+			 }
+		  }
+	 	 
+ }
+</script>
+</head>
+
+<body>
+ <div id="out">
+  <span>*</span>总体评价:
+   <div></div><div></div><div></div><div></div><div></div>
+  <span id="level">较差</span>
+ </div>
+</body>
+</html>

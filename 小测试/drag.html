@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{height:400px;width:400px;text-align:center;margin:0px auto;background:#70C3EB}
+		</style>
+		<script type="text/javascript">
+		 var json=[
+		 	        {"name":["sun","chen","mao"],"add":"jiangxi"},
+		 	        {"name":"chen","add":"jiujiang"},
+		 	        {"name":"mao","add":"nanchang"}
+		 	      ]
+//		 alert(json[1].name)
+//		 delete json[1].name;
+//		 alert(json[1].name)
+//		 alert(json[1])
+//		 alert(typeof json)
+alert(json instanceof Object)
+		 alert(json[0].name[0])
+		 
+		  function dragstart(event){
+		  	var event=event||window.event;
+		    event.dataTransfer.setData("Text",event.target.className)
+		  }
+		  function dropover(event){
+		  	var event=event||window.event;
+		  	event.preventDefault();
+		  	event.returnValue=false;
+		  }
+		  function drop(event){
+		  	 var event=event||window.event;
+		  	 event.preventDefault();
+		  	event.returnValue=false;
+		  	event.target.appendChild(document.getElementsByClassName(event.dataTransfer.getData("Text"))[0])
+		  	 alert(event.dataTransfer.getData("Text"))
+		  }
+		</script>
+	</head>
+	<body>
+		<div  ondragover="dropover(event)" ondrop="drop(event)">
+			
+		</div>
+		<img src="img/14555070718366.jpg" class="img" draggable="true" ondragstart="dragstart(event)" />
+	</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{position:relative}
+  h2{display:inline}
+  .div1{display: inline-block;background:#F00;width:100px;height:40px;
+        text-align:center;line-height:40px;}
+  .div2{border: #666 4px solid;width:50px;height:50px}
+  .div3{background:#CCC;width:1366px;height:768px;top:-10px;display:none;
+        filter:alpha(opacity=50);opacity:0.5;position:absolute}
+   .div4{border:#333 10px solid;width:300px; text-align:center; padding:20px;
+         background:#fff;margin-top:250px;margin-left:600px;}
+   .div4 div{height:25px;width:25px; text-align:center;line-height:25px;
+               display:inline-block;background:#666;margin:3px;border:1px #CCCCCC solid}
+	.div4 #divr{background:#F03}
+	.div4 #divg{background:#0F6}
+	.div4 #divy{background:#C90}
+</style>
+<script>
+window.onload=function (){
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var oDiv3=document.getElementById('div3');
+	var oDiv4=document.getElementById('div4');
+	var aDiv=document.getElementsByClassName('div');
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	var i=0;
+	 
+	 oBtn1.onclick=function (){
+		   oDiv2.style.height='50px';
+		   oDiv2.style.width='50px';
+		   oDiv2.style.background='#fff';
+		   
+		 }
+    oBtn2.onclick=function (){
+		 oDiv3.style.display='none';
+		   
+		 }
+	 oDiv1.onclick=function(){
+			oDiv3.style.display='block';
+		 }
+		 
+	 aDiv[0].onmouseover=function (){
+			    aDiv[i].style.background='pink';
+			   }
+     aDiv[0].onclick=function (){
+			    oDiv2.style.background='red';
+			   }
+	 aDiv[1].onmouseover=function (){
+			    aDiv[i].style.background='green';
+			   }
+    aDiv[1].onclick=function (){
+			    oDiv2.style.background='green';
+			   }
+	 aDiv[2].onmouseover=function (){
+			    aDiv[i].style.background='yellow';
+			   }
+	 aDiv[2].onclick=function (){
+			    oDiv2.style.background='yellow';
+			   }
+	 for(i=3;i<aDiv.length;i++)
+	   {
+		   
+		   aDiv[i].onmouseover=function (){
+			    this.style.background='#c60';
+			   }
+		  aDiv[i].onmouseout=function (){
+			    this.style.background='#666';
+			   }
+		   }
+     for(i=3;i<6;i++)
+	   {   
+		   aDiv[i].index=i;
+		   aDiv[i].onclick=function(){
+			    oDiv2.style.height=200+(this.index-3)*100+'px';
+			   }
+		   }
+	  for(i=6;i<9;i++) 
+	   { 
+		   aDiv[i].index=i;
+		   aDiv[i].onclick=function (){
+			    oDiv2.style.width=200+(this.index-6)*100+'px';
+			   }
+		   }
+	}
+ 
+ 
+</script>
+</head>
+
+<body>
+<h2>请为下面的div设置样式：</h2><div id="div1" class="div1">设置样式</div>
+<div id="div2" class="div2"></div>
+<div id="div3" class="div3">
+ <div class="div4">
+      请选择背景颜色:<div id="divr" class="div">红</div><div id="divg" class="div">绿</div><div id="divy" class="div">黄</div><br />
+      请选择高(px)&nbsp;&nbsp;:<div class="div">200</div><div class="div">300</div><div class="div">400</div><br />
+      请选择宽(px)&nbsp;&nbsp;:<div class="div">200</div><div class="div">300</div><div class="div">400</div><br />
+       <input id="btn1" type="button" value="恢复" /><input id="btn2" type="button" value="确认" />
+    </div></div>
+</body>
+</html>

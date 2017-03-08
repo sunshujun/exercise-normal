@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div{ background-color:#666;
+      width:300px; height:150px;
+	  display:none;
+	  border:#666 solid 1px;
+   }
+ .btn{ background-color:#0F6}
+</style>
+ <script>
+   window.onload=function()
+     {
+		 var btn=document.getElementsByTagName("input");
+		 var box=document.getElementsByTagName("div");
+		 for(var i=0;i<btn.length;i++)
+		    { btn[i].index=i;
+			  btn[i].onclick=function()
+			    { 
+				  for(var x=0;x<btn.length;x++)
+				     {
+					   box[x].style.display="none"; 
+					   btn[x].className="";
+					  }
+				  this.className="btn";
+				 
+				  box[this.index].style.display="block";
+				}
+			}
+	 }
+ </script>
+</head>
+  
+<body>
+<input type="button" class="btn" value="1"/>
+<input type="button" value="2"/>
+<input type="button" value="3" />
+ <div style="display:block">你好</div>
+ <div>hello</div>
+ <div> world</div>
+</body>
+</html>

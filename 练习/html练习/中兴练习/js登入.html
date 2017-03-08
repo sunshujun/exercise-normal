@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+
+var flag=true;
+  function f(p){
+	   alert("你的学历是："+p);
+	  }
+	  
+ function validate()
+   {
+	    if(mf.uname.value==null||mf.uname.value==""||mf.uname.value.length>10)
+		   {
+			    alert("用户名不能为空，且名字长度不能超过10");
+				mf.uname.focus();
+				return false;
+			}
+			else if(mf.upass1.value!=mf.upass2.value)
+			       {
+					   alert("前后密码不一致");
+					   mf.upass1.focus();
+					   return false;
+				   }
+				   else if(mf.utel.value.length!=11||mf.utel.value==null||mf.utel.value=="")
+			       {
+					   alert("电话号码错误");
+					   mf.upass1.focus();
+					   return false;
+				   }
+		
+			else{return true;}
+	}
+	
+	
+function show()
+   { 
+     if(flag)
+	  {
+		  mf.upass1.setAttribute("type","text");
+		  mf.upass2.setAttribute("type","text");
+		 mf.dis.setAttribute("value","隐藏密码");
+		 flag=false;
+	  }
+	   else
+	   {
+		    mf.upass1.setAttribute("type","password");
+		  mf.upass2.setAttribute("type","password");
+		   mf.dis.setAttribute("value","显示密码");
+		  flag=true;
+		  }
+	  
+	}
+</script>
+<style >
+
+</style>
+
+<script type="text/javascript" src="">
+</script>
+</head>
+
+<body>
+  学历：<select name="edu" onchange="f(this.value)"  size="1">
+    <option value="高中">高中
+     <option value="大学">大学
+     <option value="研究生">研究生
+  </select>
+  <br />
+  <h2>用户注册</h2>
+  <form action="#" method="post" name="mf">
+  用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input type="text"  name="uname" value="ssss" /><br />
+  密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="upass1" /><br />
+  确认密码：<input type="password" name="upass2"  /><br />
+  电话号码：<input type="text" name="utel"  /><br />
+ &nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;：<input type="text"  name="umail" /><br/>
+  <input type="submit" onclick=" return validate()" />
+  <input type="reset" /> 
+  <input type="button" name="dis" onclick="show()" value="显示密码" />
+  </form>
+  
+  <div>
+</body>
+</html>

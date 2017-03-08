@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ <style>
+ *{padding:0;margin:0;}
+  #roll{height:108px;width:880px;border:#989898 solid 1px;position:relative; margin: 50px auto 0;}
+   #roll #wrap{height:108px;width:712px;margin:0 auto;position:relative;overflow:hidden;}
+  #roll ul{position:absolute;left:0;width:1424px;}
+  #roll li{float:left;list-style:none;}
+  
+  #btn1{width:68px;height:68px;background:url(images/btn.jpg) no-repeat -68px -68px;
+        position:absolute;left:10px;top:20px;display:block;z-index:1;}
+  #btn1-left{width:68px;height:68px;background:url(images/btn.jpg) no-repeat -68px 0px;
+        position:absolute;left:10px;top:20px;display:block;z-index:1;}
+  #btn2{width:68px;height:68px;background:url(images/btn.jpg) no-repeat -0px -68px;
+         position:absolute;right:10px;top:20px;display:block;z-index:1;}
+  #btn2-right{width:68px;height:68px;background:url(images/btn.jpg) no-repeat 0px 0px;
+         position:absolute;right:10px;top:20px;display:block;z-index:1;}
+   .img{margin-top:5px}
+ </style>
+ 
+ <script type="text/javascript">
+   window.onload=function()
+         {   
+		    var time;
+			 var oUI =document.getElementById("ul");
+			 var left=oUI.offsetLeft;
+			 var width=oUI.offsetWidth;
+			 var img=document.getElementsByTagName("img");
+			 
+			  var btn1=document.getElementById("btn1");
+			  var btn2=document.getElementById("btn2");
+			  
+			  function moveleft()
+			    {
+				  left-=3;
+				  oUI.style.left=left+"px";	
+				   if(Math.abs(left)>width/2)
+				     {
+						  left=0;
+						  oUI.style.left=0+"px";
+					 }
+				}
+			time=setInterval(moveleft,30);
+			  function moveright()
+			    {
+					left+=3;
+					if(left>0)
+					   {
+						   left=-width/2;
+						   oUI.style.left=left+"px";
+						}
+					oUI.style.left=left+"px";
+					
+				} 
+			<!--  setInterval(moveright,30);-->
+			
+		 btn1.onmousedown=function()
+		     { 
+			   clearInterval(time);
+			   this.id="btn1-left";	
+			   time=setInterval(moveleft,30); 
+			 }
+		 btn1.onmouseup=function()
+		      {
+				  this.id="btn1";
+			   }
+		 
+	      btn2.onmousedown=function()
+		     { 
+				clearInterval(time);
+			   this.id="btn2-right";	
+			   time=setInterval(moveright,30); 
+			 }		
+	  btn2.onmouseup=function()
+		      {
+				  this.id="btn2";
+			   } 
+			   
+	 for(var i=0;i<img.length;i++)
+	      {
+			 img[i].onmouseover=function()
+			    {
+					this.className="img";
+				}  
+			 img[i].onmouseout=function()
+			   {
+				   this.className="";
+				}
+			}   
+	 		   
+	      }
+		  
+ </script>
+</head>
+  
+<body>
+  <div id="roll">
+     <div id="btn1"></div>
+    <div id="wrap">
+     <ul id="ul">
+        <li><img src="images/1.jpg" /> </li>
+        <li><img src="images/2.jpg" /> </li>
+        <li><img src="images/3.jpg" /> </li>
+        <li><img src="images/4.jpg" /> </li>
+        <li><img src="images/1.jpg" /> </li>
+        <li><img src="images/2.jpg" /> </li>
+        <li><img src="images/3.jpg" /> </li>
+        <li><img src="images/4.jpg" /> </li>
+       
+     </ul>
+     </div>
+     <div id="btn2"></div>
+  </div>
+   
+</body>
+</html>

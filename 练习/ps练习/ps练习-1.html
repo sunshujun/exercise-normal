@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  #outer{width:344PX;height:389px; background: url(%E8%83%8C%E6%99%AF1.gif) repeat-x; position:relative;}
+  .contain{ background:#fff; position:absolute;top:50px; left:50px}
+  .contain div{width:244px; border-bottom:#d8d8d8 1px solid;}
+  .div1{height:49px;background: url(%E5%9B%BE%E6%A0%871.gif) no-repeat 21px 17px;}
+  .div2{height:46px;background: url(%E5%9B%BE%E6%A0%872.gif) no-repeat 21px 16px;}
+  .div3{height:46px;background: url(%E5%9B%BE%E6%A0%873.gif) no-repeat 19px 15px;}
+  .contain .div3{width:242px}
+  .div4{height:46px;background:url(%E5%9B%BE%E6%A0%874.gif) no-repeat 21px 16px;}
+  .div5{height:46px;background:url(%E5%9B%BE%E6%A0%875.gif) no-repeat 21px 17px;}
+  .div6{height:51px;background:url(%E5%9B%BE%E6%A0%876.gif) no-repeat 21px 15px;}
+  .contain .last{border-bottom:none;}
+  #change{width:242px;border-left:#ce6633 2px solid;}
+</style>
+<script>
+	window.onload=function(){
+		var oCon=document.getElementsByClassName('contain');
+		var aDiv=oCon[0].getElementsByTagName('div');
+		var id=0;
+		for(var i=0;i<aDiv.length;i++)
+		 {
+		  aDiv[i].index=i; 
+		  aDiv[i].onmouseover=function()
+		   {   
+		       aDiv[id].id="";
+			   this.id="change";
+			   if(this.index>=0&&this.index<2)
+			   {
+				   aDiv[id]
+				}
+				if(this.index==0)
+				{
+					aDiv[1].style.backgroundImage="url(%E5%9B%BE%E6%A0%872.gif)";
+					aDiv[0].style.backgroundImage="url(%E5%9B%BE%E6%A0%87%E8%89%B21.gif)";
+					
+				}
+				if(this.index==1)
+				{  
+				    aDiv[0].style.backgroundImage=" url(%E5%9B%BE%E6%A0%871.gif)";
+					aDiv[1].style.backgroundImage="url(%E5%9B%BE%E6%A0%87%E8%89%B22.gif)";
+					
+				}
+				id=this.index;
+			}	 
+		  }
+		
+		}
+</script>
+</head>
+
+<body>
+	<div id="outer">
+     	<div class="contain">
+          <div class="div1"></div>
+          <div class="div2"></div>
+          <div class="div3"></div>
+          <div class="div4"></div>
+          <div class="div5"></div>
+          <div class="div6 last"></div>
+        </div>
+    </div>
+</body>
+</html>

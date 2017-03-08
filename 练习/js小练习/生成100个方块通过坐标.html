@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body{padding:0;margin:0px;}
+ div{width:30px;height:30px;margin:10px 10px;background:#666; display:inline-block;line-height:30px; position:absolute;text-align:center}
+</style>
+<script>
+ window.onload=function(){
+	 var oUl=document.getElementById('list');
+	 var oBtn=document.getElementById('btn');
+	 var aLi=oUl.getElementsByTagName('div');
+	 var aColor=['red','white','yellow','blue','pink','green'];
+	 oBtn.onclick=function(){
+		 for(var i=0;i<100;i++)
+	      {
+				     oUl.innerHTML=oUl.innerHTML+'<div>'+i+'</div>';
+				 
+		  }
+	  function setColor(){
+		   for(var i=0;i<aLi.length;i++)
+		    {   
+			 aLi[i].style.left=Math.floor(i%10)*40+'px';
+			    aLi[i].style.top=Math.floor( i/10)*40+30+'px';
+				aLi[i].style.background=aColor[i%6];
+		     }
+		  }	  
+	     setColor();
+		 }
+	 
+	 }
+</script>
+</head>
+
+<body>
+<input  type="button" id="btn" value="生成100个方块"/>
+<ul id="list">
+</ul>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>localStroage</h1>
+		<div>
+			<label>姓名</label>：<input type="text" class="name"><br />
+			<label>住址</label>：<input type="text" class="address"/>
+			<button onclick="savel()">save</button>
+		</div>
+		<p>请输入你要查找谁的住址</p>
+		<input type="text" class="search-name"/><button onclick="findl()">find</button>
+		<div class="result"></div>
+		
+		
+		<h1>sessionStroage</h1>
+		<div>
+			<label>姓名</label>：<input type="text" class="name"><br />
+			<label>住址</label>：<input type="text" class="address"/>
+			<button onclick="saves()">save</button>
+		</div>
+		<p>请输入你要查找谁的住址</p>
+		<input type="text" class="search-name"/><button onclick="finds()">find</button>
+		<div class="result"></div>
+		<script>
+			
+			function savel(){
+				var name=document.getElementsByClassName("name")[0].value;
+			    var addr=document.getElementsByClassName("address")[0].value;
+			    localStorage.setItem(name,addr);
+			    alert("保存成功");
+			}
+			function findl(){
+				var name=document.getElementsByClassName("search-name")[0].value;
+				var oDiv=document.getElementsByClassName("result")[0];
+				oDiv.innerHTML="你所查找的"+name+"的住址为："+localStorage.getItem(name);
+			}
+			
+			
+			function saves(){
+				var name=document.getElementsByClassName("name")[1].value;
+			    var addr=document.getElementsByClassName("address")[1].value;
+			    sessionStorage.setItem(name,addr);
+			    alert("保存成功");
+			}
+			function finds(){
+				var name=document.getElementsByClassName("search-name")[1].value;
+				var oDiv=document.getElementsByClassName("result")[1];
+				oDiv.innerHTML="你所查找的"+name+"的住址为："+sessionStorage.getItem(name);
+			}
+		</script>
+	</body>
+</html>

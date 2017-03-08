@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul,li{margin:0;padding:0}
+ li{ list-style:none;height:30px;width:100px; background:#990;margin:10px 0 0px 50px}
+ div{ height:100px;width:100px;background:red; margin:240px 0 0 200px }
+ 
+</style>
+<script>
+  window.onload=function(){
+	  var aLi=document.querySelectorAll('li');
+	  var oDiv=document.querySelector('div');
+	  var oUl=document.querySelector('ul');
+	  var oImg=document.querySelector('img');
+	  var num=0;
+	  var num2=0;
+	   for(var i=0;i<aLi.length;i++)
+	    {   
+		    aLi[i].title=0;
+			aLi[i].index=0;
+			aLi[i].ondragstart=function(ev){
+				oEvent=ev||event;
+				oEvent.dataTransfer.setData('name','32134');
+				oEvent.dataTransfer.setDragImage(oImg,0,0);
+				this.style.background='#9FC';
+				num2=this.index;
+				}
+				
+		    aLi[i].ondragend=function(){
+				this.style.background='#990';
+				}
+				
+			aLi[i].ondrag=function(){
+				document.title=this.title++;
+				}
+
+		}
+		
+		oDiv.ondragenter=function(){
+			  this.style.background='#F9C';
+			}
+			
+		oDiv.ondragleave=function(){
+			  this.style.background='#f00';
+			}
+			
+		oDiv.ondragover=function(ev){
+			oDiv.innerHTML=num++;
+			 ev.preventDefault();
+			}
+			
+		oDiv.ondrop=function(ev){
+			oEvent=ev||event;
+			oUl.removeChild(aLi[num2]);
+			aLi=document.querySelectorAll('li');
+			oDiv.innerHTML=oEvent.dataTransfer.getData('name');
+			}
+	  }
+</script>
+</head>
+ 
+<body>
+  <ul>
+     <li draggable="true"></li>
+     <li draggable="true"></li>
+     <li draggable="true"></li>
+  </ul>
+  <div></div>
+  <img  style="display:none; width:100px;height:50px" src="image/1.jpg" />
+</body>
+</html>

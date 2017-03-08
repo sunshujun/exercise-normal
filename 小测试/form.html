@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    .line{margin:15px}
+			.line input,.line select,button{height:40px;border-radius:5px;font-size:22px;margin:15px 20px;line-height:40px;}
+			.line input{width:400px}
+			.line select{width:200px;} 
+			button{width:100px;background:#70c3eb;outline:none;margin-left:80px;}
+		</style>
+		<script>
+			function check(obj){
+				var value=obj.value; 
+				if(value.indexOf(".xls")==-1)
+				{
+					alert("文件类型错误");
+				}else{
+					if(value.lastIndexOf("x")==value.length-1)
+					{
+						alert("文件类型错误");
+						obj.value="";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<div class="line">
+				<img src="img/file.gif" /><br />
+				<input type="file" onchange="check(this)"/></div>
+			<div class="line">
+				<img src="img/type.gif" /><br />
+				<select>
+					<option value="">--请选择--</option>
+					<option value="">短期</option>
+					<option value="">长期</option>
+					<option value="">短期</option>
+				</select>	
+			</div>
+			<button type="submit">保存</button>
+		</form>
+	</body>
+</html>

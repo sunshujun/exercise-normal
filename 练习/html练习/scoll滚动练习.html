@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+  <style>
+ div{width:100px;height:100px;background:green;position:absolute;right:0;top:0}
+ #btn{position:fixed;bottom:0;right:0;}
+ </style>
+  <script>
+   window.onload=window.onscroll=function()
+          {   
+		    function show()
+			 {
+			  var oDiv=document.getElementById('div1');
+			  var h=document.documentElement.clientHeight||document.body.clientHeight;
+			  var s=document.documentElement.scrollTop||document.body.scrollTop;
+			  var top=s+(h-oDiv.offsetHeight)/2;
+			  oDiv.style.top=top+'px';
+			  
+			
+			 }
+			 show();
+			 
+			 var oBtn=document.getElementById('btn');
+			  oBtn.onclick=function()
+			    {
+				  document.documentElement.scrollTop=document.body.scrollTop=0;
+				 show(); 
+				}
+			 
+		   }
+  </script>
+</head>
+
+<body style="height:2000px">
+  <div id="div1"></div>
+  <p id="demo1"></p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p><p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+<p id="demo">sdfsf</p>
+ <input type="button" id="btn" value="回到顶部">
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		body{margin:0;padding:0}
+			div{width:400px;height:400px;background:#F9C8AA}
+			.wrap{width:400px;height:400px;position:relative;margin:200px}
+			.inner{width:200px;height:200px;background:#F0FFA4;position:absolute;left:100px;top:100px}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js" ></script>
+	</head>
+	<body>
+		<div>
+			hello，你好！
+		</div>
+		<div class="wrap">
+			<div class="inner"></div>
+		</div>
+		<script>
+		    function getStyle(obj,style){
+		    	return obj.currentStyle?obj.currentStyle[style]:getComputedStyle(obj,true)[style]
+		    }
+		    var oDiv=document.getElementsByTagName("div")[0];
+		    var oInner=document.getElementsByClassName("inner")[0];
+		    var age=1;
+			console.log(oDiv.style.height);
+			console.log(getStyle(oDiv,"height")+":"+getStyle(oDiv,"background-color"));
+			console.log(oDiv.offsetHeight);
+			console.log("position:"+oInner.offsetLeft+":"+oInner.offsetTop);
+			console.log("position:offset"+$(oInner).offset().left+":"+$(oInner).offset().top);
+			console.log("position:position"+$(oInner).position().left+":"+$(oInner).position().top);
+			age++;
+			alert(age)
+		</script>
+	</body>
+</html>

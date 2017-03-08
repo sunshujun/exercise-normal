@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	         body{background:#333;}
+	         div{width:600px;height:600px;margin:50px auto;background:white}
+	</style>
+</head>
+<body>
+ <div>
+ 	<canvas id="can" width="600" height="600"></canvas>
+ </div>
+</body>
+<script type="text/javascript">
+	var can=document.getElementById("can");
+	var oC= can.getContext("2d");
+	var image=new Image();
+	image.src="person.png";
+	var iRotate=0;
+	var ball=[];
+	var shell=[];
+	ball[0]={
+                   x:300,
+                   y:0,
+                   r:200,
+                   num:0,
+                   startX:300,
+                   startY:0
+	}
+	image.onload=function(){
+	       setInterval(function(){
+	       	oC.clearRect(0,0,can.width,can.height);   
+	       	 oC.fillStyle="#000"
+		oC.beginPath();
+		oC.arc(300,200,200,-0.5*Math.PI,1*Math.PI);
+		oC.arc(250,200,150,1*Math.PI,2*Math.PI);
+		oC.moveTo(420,200);
+		oC.arc(400,200,20,0,2*Math.PI);
+		oC.stroke(); 
+		oC.save();
+		oC.translate(300,200);
+		oC.rotate(iRotate); 
+		oC.drawImage(image,-40,-40);
+		oC.restore();  
+		 for(var i=0;i<ball.length;i++){
+	    	    oC.beginPath();
+	    	    oC.arc(ball[i].x,ball[i].y,20,0,2*Math.PI);
+	    	    oC.fill(); 
+	             } 
+	             if(shell.length){
+	                for(var t=0;t<shell.length;t++){
+	    	    oC.beginPath();
+	    	    oC.fillStyle="#f00";
+	    	    oC.arc(shell[t].x,shell[t].y,20,0,2*Math.PI); 
+	    	    oC.fill();  
+	                }
+	             } 
+	       },1000/60)
+	};
+           
+          setInterval(function(){
+                     for(var i=0;i<ball.length;i++){  
+	    	ball[i].num++; 
+	    	if(ball[i].num==270){
+	    	     ball[i].r=150;
+	    	     ball[i].startX=250; 
+	    	     ball[i].startY=50; 
+	    	}
+                         if(ball[i].num==450){
+                         	  alert("游戏结束！！");
+                         	  window.location.reload();
+                         }
+	    	ball[i].x=ball[i].startX+ball[i].r*Math.sin(ball[i].num*Math.PI/180);
+	    	ball[i].y=ball[i].startY+ball[i].r-ball[i].r*Math.cos(ball[i].num*Math.PI/180);  
+	        } 
+	        for(var t=0;t<shell.length;t++){
+                          shell[t].r+=4;
+                          shell[t].x=300+shell[t].r*Math.sin(shell[t].ra);
+	    	shell[t].y=200-shell[t].r*Math.cos(shell[t].ra);
+	    	for(var z=0;z<ball.length;z++){
+	    	       var x=shell[t].x-ball[z].x;
+	    	       var y=shell[t].y-ball[z].y;
+	    	       if(Math.sqrt(x*x+y*y)<=40){
+                                       shell.splice(t,1);
+                                       ball.splice(z,1);
+                                       break;
+	    	       }
+	    	}
+	        }
+             },30); 
+	setInterval(function(){
+                  var b={
+                  	      x:300,
+	                   y:0,
+	                   r:200,
+	                   num:0,
+	                   startX:300,
+	                   startY:0
+                              }
+                   ball.push(b);
+	},400);
+	
+         can.onmousemove=function(event){
+         	var ev=event||window.event; 
+         	var  a=ev.clientX-can.offsetLeft-300;
+         	var b=ev.clientY-can.offsetTop-200;
+         	var c=Math.sqrt(a*a+b*b);
+         	if(a>0&&b>0){
+         	       iRotate = Math.asin(b/c)+0.5*Math.PI;
+         	}else if(a>0&&b<0){
+                    iRotate=Math.asin(a/c);
+         	};
+
+         	if(a<0&&b<0){
+         	      iRotate=Math.acos(-a/c)+1.5*Math.PI;
+         	}else if(a<0&&b>0){
+         	      iRotate=1.5*Math.PI-Math.asin(b/c);
+         	} ;
+         }
+         can.onclick=function(event){
+         	var ev=event||window.event; 
+         	var  a=ev.clientX-can.offsetLeft-300;
+         	var b=ev.clientY-can.offsetTop-200;
+         	var c=Math.sqrt(a*a+b*b); 
+         	var j={
+         		x:300,
+                         y:200,
+                         r:0,
+                         ra:0
+         	}; 
+             if(a>0&&b>0){
+         	      j.ra= Math.asin(b/c)+0.5*Math.PI;
+         	}else if(a>0&&b<0){
+                   j.ra=Math.asin(a/c);
+         	};
+
+         	if(a<0&&b<0){
+         	     j.ra=Math.acos(-a/c)+1.5*Math.PI;
+         	}else if(a<0&&b>0){
+         	     j.ra=1.5*Math.PI-Math.asin(b/c);
+         	} ;
+         	shell.push(j); 
+         }
+</script>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ #outer {position:absolute;top:200px;border:1px solid #000 ;width:300px;height:30px;left:290px}
+ #inner{width:0px;height:30px;background:#666;position:absolute;opacity:0;filter:alpha(opacity:0);}
+ .div{position:absolute;width:30px;height:30px;opacity:1;filter:alpha(opacity:100);  
+            line-height:30px;top:0px; text-align:center;display:inline-block;}
+</style>
+<script>
+ window.onload=function(){
+	 var oOut=document.getElementById("outer");
+	 var oIn=document.getElementById("inner");
+	 var aDiv=oOut.getElementsByTagName('div');
+	 var timer=null;
+	 var num=1;
+	 var timer1=null;
+	 
+	  for(var i=1;i<aDiv.length;i++)
+	  {
+		  aDiv[i].style.left=(i-1)*30+'px';
+		  }
+	  
+	  
+	  oOut.onclick=function(){                  //鼠标点击事件
+			 clearInterval(timer);
+			 oIn.index=1;
+	        setWidth(oIn,300,10);
+		    doHidden(oIn,100,8);
+		    timer=setInterval(function(){										
+				aDiv[num].flag=num;
+				doHidden(aDiv[num],0,8);
+				doMove(aDiv[num],'top',-100,10);
+				num++;
+				if(num==aDiv.length)
+				  {
+					  clearInterval(timer);
+					  num=1;
+				}
+				},100);
+		  }
+		  
+		  
+   function doMove(obj,attr,target,speed)
+      { 
+	    clearInterval(obj.timer);
+	    var a=parseInt(getStyle(obj,attr));
+		var cur=null;
+	    speed=a>target?-speed:speed;
+	    obj.timer=setInterval(function(){
+			  a=parseInt(getStyle(obj,attr));
+		      cur=a+speed;
+			  if(cur<target)
+			   {
+				   cur=target;
+				}
+		 obj.style[attr]=cur+'px';
+			   if(a==target)
+			     {
+					 clearInterval(obj.timer);
+					 if(obj.flag==10)
+					   {
+						   setTimeout(function(){
+							    var oOut=document.getElementById("outer");
+							    var oIn=document.getElementById("inner");
+								var aDiv=oOut.getElementsByTagName('div');
+								 for(var i=1;i<aDiv.length;i++)
+								    {
+									   aDiv[i].style.top='0px';
+									   aDiv[i].style.opacity=1;
+		                               aDiv[i].style.filter='alpha:(opacity:100)';
+									}
+						             oIn.style.width='0px';
+							   },1000);
+						}
+			     }
+			},100)
+	  }
+}
+	 
+ 
+	  
+   function doHidden(obj,target,speed)
+      { 
+	   clearInterval(obj.timer1);
+	    var a=getStyle(obj,'opacity')*100;
+		var cur=null;
+	   speed=a>target?-speed:speed;
+	   obj.timer1=setInterval(function(){
+			  a=getStyle(obj,'opacity')*100;
+		      cur=a+speed;
+			 if(cur<=target&&speed<0)
+			   {
+				   cur=target;
+				}
+			  if(cur>=target&&speed>0)
+			   {
+				   cur=target;
+				}
+		 //obj.style.cssText='opacity:'+cur/100+';filter:alpha(opacity:'+cur+')';
+		// alert('opacity:'+cur/100+';filter:alpha(opacity:'+cur+')');
+		 obj.style.opacity=cur/100;
+		 obj.style.filter='alpha:(opacity:'+cur+')';
+			   if(cur==target)
+			     {  
+					 clearInterval(obj.timer1);
+					 if(obj.index==1){
+						 obj.index=0;
+						 doHidden(obj,0,15);
+						 }
+			     }
+			  
+			},100)	
+	  }
+	  
+	 
+	  
+	   function setWidth(obj,target,speed){
+			 var width=null;
+			 clearInterval(obj.timer2);
+			 obj.timer2=setInterval(function(){
+				 width=parseInt(getStyle(obj,'width'))+speed;
+				
+				   if(width>=target)
+					 {
+						 width=target;
+						 }
+				  obj.style.width=width+'px';
+				  if(width==target)
+					{
+						clearInterval(obj.timer2);
+						}
+				 },30)
+		  }
+  function getStyle(obj,attr){
+	  return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+	  }
+  
+</script>
+</head>
+
+<body>
+<div id="outer">
+<div id="inner"></div>
+    <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div> <div class="div">+1</div>
+</div>
+</body>
+</html>

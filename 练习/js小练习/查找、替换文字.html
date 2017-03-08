@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body,ul,li,hr{margin:0;padding:0}
+#show{width:400px;height:300px;border:10px solid #ccc;
+       display:inline-block;margin-left:40px}
+ul .hidden{display:none}
+ul{position:absolute;left:470px;top:10px}
+ul div{width:80px;height:50px;background:#999;font-size:20px; text-align:center;line-height:50px;margin-top:5px}
+li{list-style:none}
+#input{width:450px;height:150px;border:18px solid #C30;position:relative;display:none}
+#close{position:absolute;width:20px;height:20px;right:5px;border:1px solid #ccc; text-align:center;}
+.inner{width:65px;height:40px;display:inline-block;background:#ccc ; text-align:center;
+       line-height:40px;margin-bottom:0px}
+#search,#replace{margin-top:20px;margin-left:25px}
+#replace{margin-left:5px}
+#line{width:400px;height:2px;margin:0 auto;background:#C60 }
+#input input{margin:30px 0 0 20px}
+.change{display:none}
+span{background:#CF0}
+</style>
+<script>
+ window.onload=function(){
+	 var oUl=document.getElementsByTagName('ul')[0];
+	 var aDiv=oUl.getElementsByTagName('div');
+	 var oIn=document.getElementById('input');
+	 var oShow=document.getElementById('show');
+	 var oClose=document.getElementById('close');
+	 var aDiv1=document.getElementById('input').getElementsByTagName('div');
+	 var oCha=document.getElementById('change');
+	 var oCha1=document.getElementById('change1');
+	  var oIn1=oCha.getElementsByTagName('input')[0];
+	  var oIn2=oCha1.getElementsByTagName('input')[0];
+	  var oIn3=oCha1.getElementsByTagName('input')[1];
+	 var search=oCha.getElementsByTagName('input')[1];
+	 var replace=oCha1.getElementsByTagName('input')[2];
+	 var flag=true;
+	 for(var i=0;i<aDiv.length;i++)
+	  { var color=null;
+		aDiv[i].index=i;
+		aDiv1[i].index=i;
+	    aDiv[i].onmouseover=function ()
+		 {
+		    if(this.index==0)
+		     {
+				 color='#666';
+			 }
+			 else{color='#fc0';}
+		   this.style.background=color;
+		 }
+		 
+		 aDiv[i].onmouseout=function ()
+		 {
+		   this.style.background='#ccc';
+		 }
+	  }
+	  
+	   aDiv[0].onclick=function(){
+		  if(flag)
+		    {
+				aDiv[1].style.display='block';
+				aDiv[2].style.display='block';
+			}else {
+				aDiv[1].style.display='none';
+				aDiv[2].style.display='none';
+				}
+			flag=!flag;
+		 }
+		 
+	   for(var i=1;i<aDiv.length;i++)
+	  {
+	    aDiv[i].onclick=function (){
+           aDiv[1].style.display='none';
+		   aDiv[2].style.display='none';
+		   check(this);
+			   flag=true;
+		       oIn.style.display='block';
+		  }
+	   }
+	  aDiv1[1].onclick=aDiv1[2].onclick=function(){
+		   check(this);
+		  }
+	 oClose.onclick=function()
+	   {
+		   oIn.style.display='none';
+	   }
+	   
+	   function check(obj){
+		     aDiv1[1].style.background='#ccc';
+		     aDiv1[2].style.background='#ccc';
+		     aDiv1[obj.index].style.background='#fc0';
+		   if(obj.innerHTML=='查找')
+		     {
+				oCha.style.display='block';
+				oCha1.style.display='none'
+			 }else{
+					    oCha1.style.display='block';
+				        oCha.style.display='none'
+				 }
+		   }
+		   
+	search.onclick=function(){
+		sear(oShow,oIn1.value);
+		}
+		
+	replace.onclick=function(){
+		alert(oIn2.value);
+			alert(oIn3.value);
+		 rep(oShow,oIn2.value,oIn3.value)
+		}
+	
+		   
+ }
+ 
+ function sear(obj,target){
+	  var str=obj.innerHTML;
+	  var arr=[];
+	    if(str.indexOf(target)==-1)
+		  {
+			  alert('抱歉，没有找到你要的关键词'+target+'');
+		  }else{
+			  arr=str.split(target);
+			  obj.innerHTML=arr.join('<span>'+target+'</span>')
+			  }
+	 }
+ 
+ function rep(obj,source,target){
+	       var str=obj.innerHTML;
+	  var arr=[];
+	    if(str.indexOf(source)==-1)
+		  {
+			  alert('抱歉，没有找到你要替换的关键词'+target+'');
+		  }else{
+			  arr=str.split(source);
+			  obj.innerHTML=arr.join('<span>'+target+'</span>');
+			  }
+	 }
+</script>
+</head>
+
+<body>
+<div id="show">妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，
+              妙味提供一种全新的快乐学习方法！
+              2013年底，妙味课堂最新推出"远程培训"服务，受到很多朋友们的喜爱与追捧，
+               我们必将更加努力的帮助远程学习的朋友实现技术提升……
+  </div>
+<ul>
+ <li><div>展开</div></li>
+ <li><div class="hidden">查找</div></li>
+ <li><div class="hidden">替换</div></li>
+</ul>
+<div id="input">
+ <div id="close">X</div>
+     <div  class="inner" id="search">查找</div>
+     <div class="inner" id="replace">替换</div>
+     <div id="line"></div>
+     
+     <div class='change' id="change">
+      <input type="text" /><input type="button" value="查找" />
+     </div>
+     <div class='change' id="change1">
+      <input type="text" /><input type="text" /><input type="button" value="替换" />
+     </div>
+</div>
+</body>
+</html>

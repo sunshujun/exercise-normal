@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+ <style>
+  div{width:100px;height:100px;background:#333;position:absolute;left:10px;top:0;}
+ </style>
+ <script type="text/javascript">
+ 
+    document.onkeydown=function(ev)
+     {
+		
+			  var oEvent=ev||event;
+			 var oDiv=document.getElementsByTagName('div')[0];
+			
+			 var timer;
+		function move()
+		  {  
+		     var top=oDiv.offsetTop;
+			 var left=oDiv.offsetLeft;
+		      clearInterval(timer);
+					 if(oEvent.keyCode==87)
+					  { 
+						oDiv.style.top=top-10+'px';
+					   }
+					  else if(oEvent.keyCode==83)
+						{
+							oDiv.style.top=top+10+'px';
+						 }
+						
+						 if(oEvent.keyCode==65)
+						   {
+							  
+							   oDiv.style.left=left-10+'px';
+							 }
+							 else if(oEvent.keyCode==68)
+							  {
+								  oDiv.style.left=left+10+'px';
+							   }
+				 document.onkeyup=function()
+			      {    
+				       clearInterval(timer);
+				  }
+			       
+			 }
+			    timer=setInterval(move,30);
+			}
+			
+		
+ </script>
+</head>
+
+<body>
+
+ <div></div>
+</body>
+</html>

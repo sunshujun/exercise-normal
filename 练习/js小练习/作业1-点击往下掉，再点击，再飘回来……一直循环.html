@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ img{width:100px;height:100px;background: ;margin-left:10px;}
+</style>
+<script>
+ window.onload=function(){
+	 
+	for(var i=0;i<15;i++)
+	 {
+	  document.body.innerHTML+='<div style="width:50px;height:50px;background:#f00;position:absolute;top:10px;left:'+i*60+'px;"></div>';
+     }
+	 
+	 var aDiv=document.getElementsByTagName('div');
+	 var timer=null;
+	 var num=0;
+	 var flag1=0;
+	 var flag2=true;
+	 document.onclick=function(){
+		 document.title=getStyle(aDiv[14],'top')+':'+flag1;
+		 if(flag1==0&&flag2){
+			 flag2=false;
+		    timer=setInterval(function(){
+			 addEvent(500);
+			  },100)
+		     }
+		  if(flag1==aDiv.length&&flag2)
+		    {  
+			     flag2=false;
+				  timer=setInterval(function(){
+			     addEvent(10);
+			      },100)
+				}
+		 }
+     function addEvent(target){
+		 doMove(aDiv[num],'top',target,20);
+			  num++;
+			  if(num==aDiv.length)
+			  { 
+			    num=0;
+			    clearInterval(timer);
+			  }
+				} 
+		 
+	 function doMove(obj,attr,target,speed){
+		  clearInterval(obj.timer);
+	      var att=parseInt(getStyle(obj,attr));
+		  speed=att>target?-speed:speed;
+		 obj.timer=setInterval(function(){
+		    att+=speed;
+			
+		   if(att>target&&speed>0)
+		   {
+		    att=target;
+			flag1++;
+		   }
+		    if(att<target&&speed<0)
+		   {
+		    att=target;
+			 flag1--;
+		   }
+		    obj.style[attr]=att+'px';
+			if(att==target)
+			 {
+				 clearInterval(obj.timer); 
+			 }
+			 if(parseInt(getStyle(aDiv[aDiv.length-1],'top'))==target){
+				  flag2=true;
+				 }
+			
+		    },30)
+		 }
+	 
+	 function getStyle(obj,att){
+		 return obj.currentStyle?obj.currentStyle[att]:getComputedStyle(obj)[att]; 
+		 }
+ }
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
