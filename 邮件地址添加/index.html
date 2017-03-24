@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/zTreeStyle.css"> 
+</head>
+
+<body>
+    <div class="smodal">
+        <p class="smodal-header">选择地址<span><i class="fa fa-times" aria-hidden="true"></i></span></p>
+        <ul  class="smodal-body clearfix">
+        	 <li class="first">
+        	    <p>地址簿<input type="text" >
+        	           <span class="search"><i class="fa fa-search" aria-hidden="true"></i></span>
+        	    </p>
+        	    <div class="left">
+        	    	<ul id="treeDemo" class="ztree"></ul>
+        	    </div>
+        	    <div class="right">
+        	    	<p>
+        	    	     <span>姓名</span>
+        	    	     <span>电子邮件地址</span>
+        	    	</p>
+        	    	<ol>
+        	    		<li><span>sdsds</span><span>sdfsdfsdfsdfsdfdfsdfdssdfsdfsdfsdfsdfdfsdfds</span></li>
+        	    		<li><span>ererew</span><span>sfdsfsdf</span></li>
+        	    		<li><span>dsgd</span><span>fdgdfgdf</span></li>
+        	    	</ol>
+        	    </div>
+        	 </li>
+        	 <li class="second">
+        	    <div>
+        	 	<button><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+        	 	<button class="disable"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></button>
+        	    </div> 
+        	 </li>
+        	 <li class="third">
+        	      <p>收件人</p>
+        	      <div></div> 
+        	 </li>
+        </ul>
+        <div class="smodal-footer">
+            <button class="sure">确定</button>
+            <button class="cancel">取消</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="js/jquery.ztree.core.min.js"></script>
+<script type="text/javascript"> 
+var setting = { 
+                         data: { simpleData: { enable: true } }, 
+                         view:{ showLine:false, },
+                         callback:{ onClick:getData }
+                     }
+
+ function getData (event,treeId, treeNode, clickFlag){  //点击展开项函数
+      console.log( treeNode.name+":"+treeNode.mail);
+ }
+var imgUrl="./css/img/7.png"
+var zNodes2=[
+                        { name:"sunshujun@levelappro.com",open:true,mail:"sdihsid@",children:[
+                              { name:"个人地址簿" ,icon:imgUrl},
+                              {name:"企业地址簿",children:[
+                                  {name:"上海平欣电子科技有限公司",children:[
+                                      {name:"管理层",icon:imgUrl},
+                                      {name:"技术管理部",icon:imgUrl},
+                                      {name:"财务部",icon:imgUrl},
+                                      {name:"综合管理部",children:[
+                                            {name:"人力资源部",icon:imgUrl}
+                                      ]}
+                                  ]}
+                               ]}
+                          ]} 
+                     ] 
+
+$(document).ready(function(){
+	$.fn.zTree.init($("#treeDemo"), setting, zNodes2);
+}); 
+</script>
+</html>
